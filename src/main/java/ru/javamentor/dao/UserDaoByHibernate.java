@@ -119,15 +119,10 @@ public class UserDaoByHibernate implements UserDao {
     }
 
     @Override
-    public void updateUser(User user, String name, int age, String password, String role) throws SQLException {
+    public void updateUser(User user) throws SQLException {
         this.session = createNewSession();
 
         Transaction transaction = session.beginTransaction();
-
-        user.setName(name);
-        user.setAge(age);
-        user.setPassword(password);
-        user.setRole(role);
 
         session.update(user);
 

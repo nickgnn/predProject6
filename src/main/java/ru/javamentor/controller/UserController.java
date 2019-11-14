@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.javamentor.model.User;
-import ru.javamentor.service.Service;
+import ru.javamentor.service.UserService;
 import ru.javamentor.exception.DBException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/")
 public class UserController {
     @Autowired
-    @Qualifier("userService")
-    public Service service;
+    @Qualifier("userServiceImpl")
+    public UserService userService;
 
     @GetMapping("/")
     public String index() {
@@ -32,45 +32,37 @@ public class UserController {
 
     @GetMapping("/users")
     public String getListOfUsers(Model model) throws DBException{
-        model.addAttribute("usersList", service.getAllUsers());
+        model.addAttribute("usersList", userService.getAllUsers());
         return "usersList";
     }
 
     @GetMapping("/add")
     public String addUser(String name, int age, String password, String role) throws DBException {
-        service.addUser(name, age, password, role);
+        userService.addUser(name, age, password, role);
         return "redirect:/users";
     }
 
     @GetMapping("/edit")
-    public String editUser(@ModelAttribute User user, HttpServletRequest request) throws DBException{
+    public String editUser(@ModelAttribute User user, HttpServletRequest request) throws DBException {
         String newName = request.getParameter("newName");
         String newAge = request.getParameter("newAge");
         String newPassword = request.getParameter("newPassword");
         String newRole = request.getParameter("newRole");
 
-        if (!newName.equals("")) {
-            service.updateUser(user, newName, user.getAge(), user.getPassword(), user.getRole());
+        if (newAge.equals("")) {
+            newAge = String.valueOf(user.getAge());
         }
 
-        if (!newAge.equals("")) {
-            service.updateUser(user, user.getName(), Integer.valueOf(newAge), user.getPassword(), user.getRole());
-        }
+        User newUser = new User(newName, Integer.valueOf(newAge), newPassword, newRole);
 
-        if (!newPassword.equals("")) {
-            service.updateUser(user, user.getName(), user.getAge(), newPassword, user.getRole());
-        }
-
-        if (!newRole.equals("")) {
-            service.updateUser(user, user.getName(), user.getAge(), user.getPassword(), newRole);
-        }
+        userService.updateUser(user, newUser);
 
         return "redirect:/users";
     }
 
     @GetMapping("/delete")
     public String deleteUser(long id) throws DBException{
-        service.deleteUserById(id);
+        userService.deleteUserById(id);
         return "redirect:/users";
     }
 }
