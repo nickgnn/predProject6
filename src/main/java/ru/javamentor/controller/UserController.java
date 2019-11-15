@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.javamentor.model.User;
-import ru.javamentor.service.UserService;
+import ru.javamentor.service.Service;
 import ru.javamentor.exception.DBException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/")
 public class UserController {
     @Autowired
-    @Qualifier("userServiceImpl")
-    public UserService userService;
+    @Qualifier("userService")
+    public Service service;
 
     @GetMapping("/")
     public String index() {
@@ -32,13 +32,13 @@ public class UserController {
 
     @GetMapping("/users")
     public String getListOfUsers(Model model) throws DBException{
-        model.addAttribute("usersList", userService.getAllUsers());
+        model.addAttribute("usersList", service.getAllUsers());
         return "usersList";
     }
 
     @GetMapping("/add")
     public String addUser(String name, int age, String password, String role) throws DBException {
-        userService.addUser(name, age, password, role);
+        service.addUser(name, age, password, role);
         return "redirect:/users";
     }
 
@@ -55,14 +55,14 @@ public class UserController {
 
         User newUser = new User(newName, Integer.valueOf(newAge), newPassword, newRole);
 
-        userService.updateUser(user, newUser);
+        service.updateUser(user, newUser);
 
         return "redirect:/users";
     }
 
     @GetMapping("/delete")
     public String deleteUser(long id) throws DBException{
-        userService.deleteUserById(id);
+        service.deleteUserById(id);
         return "redirect:/users";
     }
 }
