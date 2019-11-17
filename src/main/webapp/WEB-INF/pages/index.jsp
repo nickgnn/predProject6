@@ -4,18 +4,20 @@
 
 <a href="/hello">Hello page</a>
 
-
 <br>
 <br>
 
 <a href="/users">Show users</a>
 
-
 <br>
 <br>
-
 
 <a href="/login">LogIn page</a>
+
+<br>
+<br>
+
+<a href="/reg">Registration page</a>
 
 </body>
 </html>

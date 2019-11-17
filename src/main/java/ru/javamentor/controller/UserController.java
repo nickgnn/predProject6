@@ -25,6 +25,16 @@ public class UserController {
         return "index";
     }
 
+    @GetMapping("/reg")
+    public String reg() {
+        return "reg";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/hello")
     public String hello() {
         return "hello";
