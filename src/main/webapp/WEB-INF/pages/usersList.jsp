@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="ru.javamentor.model.User" %><%--
   Created by IntelliJ IDEA.
@@ -52,12 +53,10 @@
             </table>
 </form>
 
-<%--<p><a href="/user">To user page</a></p>--%>
+<br>
+<br>
 
-
-<%--<br>--%>
-
-<%--<p><a href="/logout">LogOut</a></p>--%>
+<p><a class="btn btn-lg btn-danger" href="<c:url value="/logout" />" role="button">Log Out</a></p>
 
 <br>
 

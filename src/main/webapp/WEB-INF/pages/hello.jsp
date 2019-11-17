@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: nick
@@ -20,6 +21,12 @@
 <br>
 
 <a href="/users">Show users</a>
+
+
+<br>
+<br>
+
+<p><a class="btn btn-lg btn-danger" href="<c:url value="/logout" />" role="button">Log Out</a></p>
 
 </body>
 </html>
