@@ -14,10 +14,5 @@
 
 <a href="/login">LogIn page</a>
 
-<br>
-<br>
-
-<a href="/reg">Registration page</a>
-
 </body>
 </html>

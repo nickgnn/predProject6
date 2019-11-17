@@ -15,10 +15,39 @@
 <h2>Login page</h2>
 
 <br>
-<br>
 
 
 <a href="/">Start page</a>
+
+<br>
+<br>
+
+
+<h1>Fill form below</h1>
+
+<form action="/login" method="post">
+    <table>
+        <tbody>
+        <tr>
+            <td>Login:</td>
+            <td>
+                <input type="text" required placeholder="name" name="name" >
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <input type="password" required placeholder="password" name="pass" >
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Enter" >
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
 
 </body>
 </html>
