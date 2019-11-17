@@ -12,6 +12,12 @@
 </head>
 <body>
 
+<h2>Registration page</h2>
+
+<br>
+<br>
+
+<a href="/">Start page</a>
 
 </body>
 </html>

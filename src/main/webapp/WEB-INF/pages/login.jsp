@@ -12,7 +12,13 @@
 </head>
 <body>
 
+<h2>Login page</h2>
 
+<br>
+<br>
+
+
+<a href="/">Start page</a>
 
 </body>
 </html>
