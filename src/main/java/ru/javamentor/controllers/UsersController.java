@@ -1,12 +1,10 @@
-package ru.javamentor.controller;
+package ru.javamentor.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.javamentor.model.User;
 import ru.javamentor.service.Service;
 import ru.javamentor.exception.DBException;
@@ -15,25 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/")
-public class UserController {
+public class UsersController {
     @Autowired
     @Qualifier("userService")
     public Service service;
-
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello";
-    }
 
     @GetMapping("/users")
     public String getListOfUsers(Model model) throws DBException{
