@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.javamentor.model.User;
-import ru.javamentor.service.Service;
+import ru.javamentor.service.UserService;
 import ru.javamentor.exception.DBException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/")
 public class UsersController {
     @Autowired
-    @Qualifier("userService")
-    public Service service;
+    @Qualifier("userServiceImpl")
+    public UserService service;
 
     @GetMapping("/users")
     public String getListOfUsers(Model model) throws DBException{

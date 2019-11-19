@@ -1,131 +1,32 @@
 package ru.javamentor.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import ru.javamentor.dao.UserDao;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import ru.javamentor.exception.DBException;
 import org.springframework.stereotype.Component;
 import ru.javamentor.model.User;
 
-import java.sql.SQLException;
 import java.util.List;
 
-@Component
-public class UserService implements Service {
-    @Autowired
-    @Qualifier("userDaoByHibernate")
-    UserDao userDao;
+public interface UserService extends UserDetailsService {
+    void createTable() throws DBException;
 
-    @Override
-    public void addUser(String name, int age) throws DBException {
-        try {
-            userDao.addUser(name, age);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
+    void cleanUp() throws DBException;
 
-    @Override
-    public void addUser(String name, int age, String password, String role) throws DBException {
-        try {
-            userDao.addUser(name, age, password, role);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
+    List<User> getAllUsers() throws DBException;
 
-    @Override
-    public List<User> getAllUsers() throws DBException {
-        try {
-            return userDao.getAllUsers();
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
+    void addUser(String name, int age) throws DBException;
 
-    @Override
-    public User getUserByName(String name) throws DBException {
-        try {
-            return userDao.getUserByName(name);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
+    void addUser(String name, int age, String password, String role) throws DBException;
 
-    @Override
-    public long getUserIdByName(String name) throws DBException {
-        try {
-            return userDao.getUserIdByName(name);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
+    User getUserByName(String name) throws DBException;
 
-    @Override
-    public void updateUser(User user, User newUser) throws DBException {
-        try {
-            if (!newUser.getName().equals("")) {
-                user.setName(newUser.getName());
-            }
+    void updateUser(User user, User newUser) throws DBException;
 
-            if (!newUser.getPassword().equals("")) {
-                user.setPassword(newUser.getPassword());
-            }
+    boolean isExistsUser(String name) throws DBException;
 
-            if (!newUser.getRole().equals("")) {
-                user.setRole(newUser.getRole());
-            }
+    void deleteUserByName(String name) throws DBException;
 
-            user.setAge(newUser.getAge());
+    void deleteUserById(Long id) throws DBException;
 
-            userDao.updateUser(user);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
-
-    @Override
-    public boolean isExistsUser(String name) throws DBException {
-        try {
-            return userDao.isExistsUser(name);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
-
-    @Override
-    public void deleteUserByName(String name) throws DBException {
-        try {
-            userDao.deleteUserByName(name);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
-
-    @Override
-    public void deleteUserById(Long id) throws DBException {
-        try {
-            userDao.deleteUserById(id);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
-
-    @Override
-    public void createTable() throws DBException {
-        try {
-            userDao.createTable();
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
-
-    @Override
-    public void cleanUp() throws DBException {
-        try {
-            userDao.dropTable();
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
+    long getUserIdByName(String name) throws DBException;
 }

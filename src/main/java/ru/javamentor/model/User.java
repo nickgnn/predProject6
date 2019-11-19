@@ -1,18 +1,22 @@
 package ru.javamentor.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "users", schema = "db_example")
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "age")
     private int age;
@@ -26,18 +30,18 @@ public class User {
     public User() {}
 
     public User(String name, int age) {
-        this.name = name;
+        this.username = name;
         this.age = age;
     }
 
     public User(long id, String name, int age) {
         this.id = id;
-        this.name = name;
+        this.username = name;
         this.age = age;
     }
 
     public User(String name, int age, String password, String role) {
-        this.name = name;
+        this.username = name;
         this.age = age;
         this.password = password;
         this.role = role;
@@ -45,7 +49,7 @@ public class User {
 
     public User(long id, String name, int age, String password, String role) {
         this.id = id;
-        this.name = name;
+        this.username = name;
         this.age = age;
         this.password = password;
         this.role = role;
@@ -59,12 +63,8 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getAge() {
@@ -83,8 +83,38 @@ public class User {
         this.role = role;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {
@@ -95,7 +125,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", age=" + age +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
@@ -107,11 +137,11 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(getName(), user.getName());
+        return Objects.equals(getUsername(), user.getUsername());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(getUsername());
     }
 }
