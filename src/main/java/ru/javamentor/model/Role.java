@@ -3,10 +3,10 @@ package ru.javamentor.model;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "roles", schema = "db_example")
 public class Role implements GrantedAuthority {
     @Id
     @Column(name = "id")
@@ -17,7 +17,7 @@ public class Role implements GrantedAuthority {
     private String name;
 
     @ManyToMany(mappedBy = "roles")
-    private List<User> user;
+    private Set<User> user;
 
     public Role() {
     }
@@ -38,11 +38,11 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    public List<User> getUser() {
+    public Set<User> getUser() {
         return user;
     }
 
-    public void setUser(List<User> user) {
+    public void setUser(Set<User> user) {
         this.user = user;
     }
 
