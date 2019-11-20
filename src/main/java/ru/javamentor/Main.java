@@ -19,15 +19,15 @@ public class Main {
         SessionFactory factory = configuration.buildSessionFactory(serviceRegistry);
         Session session = factory.openSession();
 
-        session.save(new User("admin", 31, "1", "admin"));
-        session.save(new User("nick", 18, "1", "user"));
-        session.save(new User("dick", 28, "1", "user"));
-        session.save(new User("quick", 68, "1", "user"));
-        session.save(new User("vick", 38, "1", "user"));
-        session.save(new User("brick", 81, "1", "user"));
-        session.save(new User("kick", 9, "1", "user"));
-        session.save(new User("pick", 999, "1", "user"));
-        session.save(new User("frick", 77, "1", "user"));
+        session.save(new User("admin", "1",31, "admin"));
+        session.save(new User("nick", "1", 18, "user"));
+        session.save(new User("dick", "1", 28, "user"));
+        session.save(new User("quick", "1",  68, "user"));
+        session.save(new User("vick", "1", 38, "user"));
+        session.save(new User("brick", "1", 81, "user"));
+        session.save(new User("kick", "1", 9, "user"));
+        session.save(new User("pick", "1", 999, "user"));
+        session.save(new User("frick", "1", 77, "user"));
 
         session.close();
     }

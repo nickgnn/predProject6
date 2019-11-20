@@ -20,7 +20,7 @@ public class User implements UserDetails {
     private String username;
 
     @Column(name = "age")
-    private int age;
+    private Integer age;
 
     @Column(name = "password")
     private String password;
@@ -28,7 +28,10 @@ public class User implements UserDetails {
     @Column(name = "role")
     private String role;
 
-    @ManyToMany
+    @Column(name = "role_id")
+    private Integer role_id;
+
+    @OneToMany(fetch=FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(
@@ -39,37 +42,62 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(String name, int age) {
+    public User(String name, String password) {
         this.username = name;
-        this.age = age;
+        this.password = password;
     }
 
-    public User(long id, String name, int age) {
+    public User(Long id, String name, String password) {
         this.id = id;
         this.username = name;
-        this.age = age;
+        this.password = password;
     }
 
-    public User(String name, int age, String password, String role) {
+    public User(String name, String password, Integer age, String role) {
         this.username = name;
         this.age = age;
         this.password = password;
         this.role = role;
     }
 
-    public User(long id, String name, int age, String password, String role) {
+    public User(Long id, String username, String password, Integer age, String role) {
         this.id = id;
-        this.username = name;
+        this.username = username;
         this.age = age;
         this.password = password;
         this.role = role;
     }
 
-    public long getId() {
+    public User(Long id, String username, String password, Integer age, String role, Integer role_id) {
+        this.id = id;
+        this.username = username;
+        this.age = age;
+        this.password = password;
+        this.role = role;
+        this.role_id = role_id;
+    }
+
+    public User(String username, String password, Integer age, String role, Integer role_id) {
+        this.username = username;
+        this.age = age;
+        this.password = password;
+        this.role = role;
+        this.role_id = role_id;
+    }
+
+    public Integer getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(Integer role_id) {
+        this.role_id = role_id;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -77,11 +105,11 @@ public class User implements UserDetails {
         this.username = username;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -91,10 +119,6 @@ public class User implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Set<Role> getRoles() {
@@ -151,6 +175,8 @@ public class User implements UserDetails {
                 ", age=" + age +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", role_id=" + role_id +
+                ", roles=" + roles +
                 '}';
     }
 

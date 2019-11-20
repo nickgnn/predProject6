@@ -25,23 +25,22 @@ public class UsersController {
     }
 
     @GetMapping("/add")
-    public String addUser(String name, int age, String password, String role) throws DBException {
-        service.addUser(name, age, password, role);
+    public String addUser(String username, String password, Integer age, String role) throws DBException {
+        service.addUser(username, password, age, role);
         return "redirect:/users";
     }
 
     @GetMapping("/edit")
     public String editUser(@ModelAttribute User user, HttpServletRequest request) throws DBException {
+        System.out.println(user);
+
         String newName = request.getParameter("newName");
         String newAge = request.getParameter("newAge");
         String newPassword = request.getParameter("newPassword");
         String newRole = request.getParameter("newRole");
+        String newRole_Id = request.getParameter("newRole_Id");
 
-        if (newAge.equals("")) {
-            newAge = String.valueOf(user.getAge());
-        }
-
-        User newUser = new User(newName, Integer.valueOf(newAge), newPassword, newRole);
+        User newUser = new User(newName, newPassword, Integer.valueOf(newAge), newRole, Integer.valueOf(newRole_Id));
 
         service.updateUser(user, newUser);
 

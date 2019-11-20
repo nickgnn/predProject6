@@ -14,9 +14,9 @@ public interface UserService extends UserDetailsService {
 
     List<User> getAllUsers() throws DBException;
 
-    void addUser(String name, int age) throws DBException;
+    void addUser(String name, String password) throws DBException;
 
-    void addUser(String name, int age, String password, String role) throws DBException;
+    void addUser(String name, String password, Integer age, String role) throws DBException;
 
     User getUserByName(String name) throws DBException;
 

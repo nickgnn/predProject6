@@ -23,9 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("admin").password("{noop}1").roles("ADMIN");
-//        auth.inMemoryAuthentication().withUser("nick").password("{noop}1").roles("USER");
-
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 
@@ -35,9 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/hello").hasAnyRole("ROLE_USER", "ROLE_ADMIN")
-                .antMatchers("/users").hasAnyRole("ROLE_ADMIN")
-                .anyRequest().authenticated()
+                .antMatchers("/hello").authenticated()
+                .antMatchers("/users").hasRole("ADMIN")
+                .anyRequest().permitAll()
                 .and();
 
         http.formLogin()

@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import ru.javamentor.dao.UserDao;
 import ru.javamentor.exception.DBException;
 import ru.javamentor.model.Role;
@@ -25,18 +26,18 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
-    public void addUser(String name, int age) throws DBException {
+    public void addUser(String name, String password) throws DBException {
         try {
-            userDao.addUser(name, age);
+            userDao.addUser(name, password);
         } catch (SQLException e) {
             throw new DBException(e);
         }
     }
 
     @Override
-    public void addUser(String name, int age, String password, String role) throws DBException {
+    public void addUser(String name, String password, Integer age, String role) throws DBException {
         try {
-            userDao.addUser(name, age, password, role);
+            userDao.addUser(name, password, age, role);
         } catch (SQLException e) {
             throw new DBException(e);
         }
@@ -72,19 +73,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(User user, User newUser) throws DBException {
         try {
-            if (!newUser.getUsername().equals("")) {
+            if (!StringUtils.isEmpty(newUser.getUsername())) {
                 user.setUsername(newUser.getUsername());
             }
 
-            if (!newUser.getPassword().equals("")) {
+            if (!StringUtils.isEmpty(newUser.getPassword())) {
                 user.setPassword(newUser.getPassword());
             }
 
-            if (!newUser.getRole().equals("")) {
+            if (!StringUtils.isEmpty(newUser.getAge())) {
+                user.setAge(newUser.getAge());
+            }
+
+            if (!StringUtils.isEmpty(newUser.getRole())) {
                 user.setRole(newUser.getRole());
             }
 
-            user.setAge(newUser.getAge());
+            if (!StringUtils.isEmpty(newUser.getRole_id())) {
+                user.setRole_id(newUser.getRole_id());
+            }
 
             userDao.updateUser(user);
         } catch (SQLException e) {
@@ -150,7 +157,7 @@ public class UserServiceImpl implements UserService {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
         for (Role role : user.getRoles()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getRolename()));
         }
 
         return new org.springframework.security.core.userdetails.User(

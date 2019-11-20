@@ -23,25 +23,25 @@
                 <tr>
                     <td>Name:</td>
                     <td>
-                        <input type="text" username="username">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Age:</td>
-                    <td>
-                        <input type="number" username="age">
+                        <input type="text" name="username">
                     </td>
                 </tr>
                 <tr>
                     <td>Password:</td>
                     <td>
-                        <input type="text" username="password">
+                        <input type="password" name="password">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td>
+                        <input type="number" name="age">
                     </td>
                 </tr>
                 <tr>
                     <td>Role:</td>
                     <td>
-                        <input type="text" username="role">
+                        <input type="text" name="role">
                     </td>
                 </tr>
                 <tr>
@@ -71,9 +71,10 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Age</th>
             <th>Password</th>
+            <th>Age</th>
             <th>Role</th>
+            <th>Role_ID</th>
             <th>Edit user</th>
             <th>Delete user</th>
         </tr>
@@ -88,49 +89,51 @@
     <tr>
         <th><%=user.getId()%></th>
         <th><%=user.getUsername()%></th>
-        <th><%=user.getAge()%></th>
         <th><%=user.getPassword()%></th>
+        <th><%=user.getAge()%></th>
         <th><%=user.getRole()%></th>
-        <td><form username="user" action="/edit" method="get">
+        <th><%=user.getRole_id()%></th>
+        <td><form name="user" action="/edit" method="get">
             <table>
                 <tbody>
-                <%--<tr>--%>
-                    <%--<td>Edit id:</td>--%>
-                    <%--<td>--%>
-                        <%--<input type="number" username="newId">--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
                 <tr>
                     <td>Edit username:</td>
                     <td>
-                        <input type="text" username="newName">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Edit age:</td>
-                    <td>
-                        <input type="number" username="newAge">
+                        <input type="text" name="newName">
                     </td>
                 </tr>
                 <tr>
                     <td>Edit password:</td>
                     <td>
-                        <input type="text" username="newPassword">
+                        <input type="text" name="newPassword">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Edit age:</td>
+                    <td>
+                        <input type="number" name="newAge">
                     </td>
                 </tr>
                 <tr>
                     <td>Edit role:</td>
                     <td>
-                        <input type="text" username="newRole">
+                        <input type="text" name="newRole">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Edit role_id:</td>
+                    <td>
+                        <input type="number" name="newRole_Id">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="hidden" username="id" value=<%=user.getId()%>>
-                        <input type="hidden" username="username" value=<%=user.getUsername()%>>
-                        <input type="hidden" username="age" value=<%=user.getAge()%>>
-                        <input type="hidden" username="password" value=<%=user.getPassword()%>>
-                        <input type="hidden" username="role" value=<%=user.getRole()%>>
+                        <input type="hidden" name="id" value=<%=user.getId()%>>
+                        <input type="hidden" name="username" value=<%=user.getUsername()%>>
+                        <input type="hidden" name="password" value=<%=user.getPassword()%>>
+                        <input type="hidden" name="age" value=<%=user.getAge()%>>
+                        <input type="hidden" name="role" value=<%=user.getRole()%>>
+                        <input type="hidden" name="role_id" value=<%=user.getRole_id()%>>
 
                         <input type="submit" value="Edit user">
                     </td>
@@ -146,7 +149,7 @@
                     <tbody>
                     <tr>
                         <td>
-                            <input type="hidden" username="id" value=<%=user.getId()%>>
+                            <input type="hidden" name="id" value=<%=user.getId()%>>
                         </td>
                     </tr>
                     <tr>

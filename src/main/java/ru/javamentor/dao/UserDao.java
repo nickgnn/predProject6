@@ -14,9 +14,9 @@ public interface UserDao {
 
     List<User> getAllUsers() throws SQLException;
 
-    void addUser(String name, int age) throws SQLException;
+    void addUser(String name, String password) throws SQLException;
 
-    void addUser(String name, int age, String password, String role) throws SQLException;
+    void addUser(String name, String password, Integer age, String role) throws SQLException;
 
     User getUserByName(String name) throws SQLException;
 

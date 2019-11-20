@@ -22,14 +22,14 @@ public class UserDaoByHibernate implements UserDao {
     }
 
     @Override
-    public void addUser(String name, int age) throws SQLException {
+    public void addUser(String name, String password) throws SQLException {
         this.session = createNewSession();
 
         User user = getUserByName(name);
 
         if (user == null) {
             Transaction transaction = session.beginTransaction();
-            session.save(new User(name, age));
+            session.save(new User(name, password));
             transaction.commit();
             session.close();
         } else {
@@ -38,14 +38,14 @@ public class UserDaoByHibernate implements UserDao {
     }
 
     @Override
-    public void addUser(String name, int age, String password, String role) throws SQLException {
+    public void addUser(String name, String password, Integer age, String role) throws SQLException {
         this.session = createNewSession();
 
         User user = getUserByName(name);
 
         if (user == null) {
             Transaction transaction = session.beginTransaction();
-            session.save(new User(name, age, password, role));
+            session.save(new User(name, password, age, role));
             transaction.commit();
             session.close();
         } else {
@@ -73,9 +73,9 @@ public class UserDaoByHibernate implements UserDao {
 
         Transaction transaction =  session.beginTransaction();
 
-        String hql = "FROM User WHERE name = :userName";
+        String hql = "FROM User WHERE username = :nameOfUser";
         Query query = session.createQuery(hql);
-        query.setParameter("userName", name);
+        query.setParameter("nameOfUser", name);
         List<User> users = query.list();
 
         transaction.commit();
@@ -96,9 +96,9 @@ public class UserDaoByHibernate implements UserDao {
 
         Transaction transaction = session.beginTransaction();
 
-        String hql = "SELECT U.id FROM User U WHERE U.name = :userName";
+        String hql = "SELECT U.id FROM User U WHERE U.username = :nameOfUser";
         Query query = session.createQuery(hql);
-        query.setParameter("userName", name);
+        query.setParameter("nameOfUser", name);
         List results = query.list();
 
         id = (long) results.get(0);
@@ -136,9 +136,9 @@ public class UserDaoByHibernate implements UserDao {
 
         Transaction transaction = session.beginTransaction();
 
-        String hql = "DELETE User WHERE name = :userName";
+        String hql = "DELETE User WHERE username = :nameOfUser";
         Query query = session.createQuery(hql);
-        query.setParameter("userName", name);
+        query.setParameter("nameOfUser", name);
 
         query.executeUpdate();
 
