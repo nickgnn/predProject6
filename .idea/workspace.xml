@@ -39,8 +39,8 @@
       <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/config/SecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="624">
+              <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,15 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="22" column="19" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="19" />
-              <folding>
-                <element signature="e#3051#3052#0" expanded="true" />
-                <element signature="e#3101#3102#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="440">
+              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -100,8 +96,8 @@
       <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/service/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="142" selection-start-line="142" selection-end-line="142" />
+            <state relative-caret-position="504">
+              <caret line="141" column="57" selection-start-line="141" selection-start-column="57" selection-end-line="141" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,7 +108,7 @@
       <file leaf-file-name="UserDaoByHibernate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/dao/UserDaoByHibernate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
+            <state relative-caret-position="1340">
               <caret line="78" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="e#564#565#0" expanded="true" />
@@ -122,28 +118,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Role.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Role.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/model/Role.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="740">
+              <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#479#480#0" expanded="true" />
-                <element signature="e#504#505#0" expanded="true" />
-                <element signature="e#538#539#0" expanded="true" />
-                <element signature="e#566#567#0" expanded="true" />
-                <element signature="e#597#598#0" expanded="true" />
-                <element signature="e#624#625#0" expanded="true" />
-                <element signature="e#664#665#0" expanded="true" />
-                <element signature="e#696#697#0" expanded="true" />
-                <element signature="e#731#732#0" expanded="true" />
-                <element signature="e#758#759#0" expanded="true" />
-                <element signature="e#802#803#0" expanded="true" />
-                <element signature="e#834#835#0" expanded="true" />
-                <element signature="e#285#286#0" expanded="true" />
-                <element signature="e#312#313#0" expanded="true" />
+                <element signature="e#926#927#0" expanded="true" />
+                <element signature="e#953#954#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GrantedAuthority.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.2.1.RELEASE/spring-security-core-5.2.1.RELEASE.jar!/org/springframework/security/core/GrantedAuthority.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -189,14 +182,14 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/usersList.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/service/Service.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/service/UserrService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/model/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.properties" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/model/UserRoles.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/config/HibernateConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/service/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/javamentor/model/Role.java" />
       </list>
     </option>
   </component>
@@ -234,8 +227,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -373,13 +366,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/security/1/predProject6" />
+    <property name="last_opened_file_path" value="D:/security/2/predProject6" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -553,12 +546,14 @@
       <workItem from="1574094202470" duration="4091000" />
       <workItem from="1574106209703" duration="20000" />
       <workItem from="1574131612303" duration="599000" />
-      <workItem from="1574184996066" duration="8519000" />
+      <workItem from="1574184996066" duration="8867000" />
+      <workItem from="1574198199346" duration="13000" />
+      <workItem from="1574220041495" duration="1615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35207000" />
+    <option name="totallyTimeSpent" value="37183000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2208" height="1208" extended-state="6" />
@@ -577,27 +572,27 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39925373" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3955224" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32976744" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3955224" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1683721" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17116278" />
       <window_info id="Web" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32929105" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Bean Validation" order="4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32929105" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.32976744" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,13 +607,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/service/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/model/Authorities.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/config/HibernateConfig.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -864,11 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#406#407#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -886,16 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/config/SecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -905,7 +878,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/dao/UserDaoByHibernate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="1340">
           <caret line="78" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="e#564#565#0" expanded="true" />
@@ -921,13 +894,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/model/UserRoles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/model/UserRoles.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/config/HibernateConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -942,10 +909,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.2.1.RELEASE/spring-security-core-5.2.1.RELEASE.jar!/org/springframework/security/core/GrantedAuthority.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/config/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/service/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
+        <state relative-caret-position="504">
+          <caret line="141" column="57" selection-start-line="141" selection-start-column="57" selection-end-line="141" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -954,35 +945,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/model/Role.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="26" />
+        <state relative-caret-position="740">
+          <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#566#567#0" expanded="true" />
-            <element signature="e#597#598#0" expanded="true" />
-            <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="e#834#835#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-            <element signature="e#312#313#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/javamentor/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="19" />
-          <folding>
-            <element signature="e#3051#3052#0" expanded="true" />
-            <element signature="e#3101#3102#0" expanded="true" />
+            <element signature="e#926#927#0" expanded="true" />
+            <element signature="e#953#954#0" expanded="true" />
           </folding>
         </state>
       </provider>

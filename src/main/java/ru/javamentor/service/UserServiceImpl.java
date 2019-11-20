@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.javamentor.dao.UserDao;
 import ru.javamentor.exception.DBException;
 import ru.javamentor.model.Role;
@@ -137,10 +138,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = null;
         try {
-            user = userDao.getUserByName(s);
+            user = userDao.getUserByName(username);
         } catch (SQLException e) {
             e.printStackTrace();
         }
