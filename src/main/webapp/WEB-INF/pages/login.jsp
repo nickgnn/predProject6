@@ -31,13 +31,13 @@
         <tr>
             <td>Login:</td>
             <td>
-                <input type="text" required placeholder="username" username="username" >
+                <input type="text" required placeholder="username" name="username" >
             </td>
         </tr>
         <tr>
             <td>Password:</td>
             <td>
-                <input type="password" required placeholder="password" username="pass" >
+                <input type="password" required placeholder="pass" name="pass" >
             </td>
         </tr>
         <tr>

@@ -29,7 +29,7 @@ public class User implements UserDetails {
     private String role;
 
     @Column(name = "role_id")
-    private Integer role_id;
+    private Long role_id;
 
     @OneToMany(fetch=FetchType.EAGER)
     @JoinTable(
@@ -68,7 +68,7 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    public User(Long id, String username, String password, Integer age, String role, Integer role_id) {
+    public User(Long id, String username, String password, Integer age, String role, Long role_id) {
         this.id = id;
         this.username = username;
         this.age = age;
@@ -77,7 +77,7 @@ public class User implements UserDetails {
         this.role_id = role_id;
     }
 
-    public User(String username, String password, Integer age, String role, Integer role_id) {
+    public User(String username, String password, Integer age, String role, Long role_id) {
         this.username = username;
         this.age = age;
         this.password = password;
@@ -85,11 +85,11 @@ public class User implements UserDetails {
         this.role_id = role_id;
     }
 
-    public Integer getRole_id() {
+    public Long getRole_id() {
         return role_id;
     }
 
-    public void setRole_id(Integer role_id) {
+    public void setRole_id(Long role_id) {
         this.role_id = role_id;
     }
 

@@ -26,18 +26,22 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
-    public void addUser(String name, String password) throws DBException {
-        try {
-            userDao.addUser(name, password);
-        } catch (SQLException e) {
-            throw new DBException(e);
-        }
-    }
-
-    @Override
     public void addUser(String name, String password, Integer age, String role) throws DBException {
         try {
-            userDao.addUser(name, password, age, role);
+            Long role_ID = 0L;
+            role = role.toUpperCase();
+
+            if (role.contains("ADMIN")) {
+                role = "ROLE_ADMIN";
+                role_ID = userDao.getRoleIdByName(role);
+            }
+
+            if (role.contains("USER")) {
+                role = "ROLE_USER";
+                role_ID = userDao.getRoleIdByName(role);
+            }
+
+            userDao.addUser(name, password, age, role, role_ID);
         } catch (SQLException e) {
             throw new DBException(e);
         }
@@ -62,7 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public long getUserIdByName(String name) throws DBException {
+    public Long getUserIdByName(String name) throws DBException {
         try {
             return userDao.getUserIdByName(name);
         } catch (SQLException e) {
@@ -81,17 +85,24 @@ public class UserServiceImpl implements UserService {
                 user.setPassword(newUser.getPassword());
             }
 
-            if (!StringUtils.isEmpty(newUser.getAge())) {
-                user.setAge(newUser.getAge());
-            }
-
             if (!StringUtils.isEmpty(newUser.getRole())) {
                 user.setRole(newUser.getRole());
+
+                user.setRole(user.getRole().toUpperCase());
+
+                if (user.getRole().contains("ADMIN")) {
+                    user.setRole("ROLE_ADMIN");
+                    user.setRole_id(userDao.getRoleIdByName(user.getRole()));
+                }
+
+                if (user.getRole().contains("USER")) {
+                    user.setRole("ROLE_USER");
+                    user.setRole_id(userDao.getRoleIdByName(user.getRole()));
+                }
             }
 
-            if (!StringUtils.isEmpty(newUser.getRole_id())) {
-                user.setRole_id(newUser.getRole_id());
-            }
+            user.setAge(newUser.getAge());
+//            user.setRole_id(newUser.getRole_id());
 
             userDao.updateUser(user);
         } catch (SQLException e) {
@@ -100,7 +111,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean isExistsUser(String name) throws DBException {
+    public Boolean isExistsUser(String name) throws DBException {
         try {
             return userDao.isExistsUser(name);
         } catch (SQLException e) {

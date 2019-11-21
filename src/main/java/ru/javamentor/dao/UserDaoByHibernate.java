@@ -22,30 +22,14 @@ public class UserDaoByHibernate implements UserDao {
     }
 
     @Override
-    public void addUser(String name, String password) throws SQLException {
+    public void addUser(String name, String password, Integer age, String role, Long role_ID) throws SQLException {
         this.session = createNewSession();
 
         User user = getUserByName(name);
 
         if (user == null) {
             Transaction transaction = session.beginTransaction();
-            session.save(new User(name, password));
-            transaction.commit();
-            session.close();
-        } else {
-            System.out.println("This name already exists, choose another name:)");
-        }
-    }
-
-    @Override
-    public void addUser(String name, String password, Integer age, String role) throws SQLException {
-        this.session = createNewSession();
-
-        User user = getUserByName(name);
-
-        if (user == null) {
-            Transaction transaction = session.beginTransaction();
-            session.save(new User(name, password, age, role));
+            session.save(new User(name, password, age, role, role_ID));
             transaction.commit();
             session.close();
         } else {
@@ -90,18 +74,37 @@ public class UserDaoByHibernate implements UserDao {
     }
 
     @Override
-    public long getUserIdByName(String name) throws SQLException {
-        long id;
+    public Long getRoleIdByName(String name) throws SQLException {
+        Long id;
+        this.session = createNewSession();
+
+        Transaction transaction =  session.beginTransaction();
+
+        String hql = "SELECT R.id FROM Role R WHERE R.rolename = :roleName";
+        Query query = session.createQuery(hql);
+        query.setParameter("roleName", name);
+        List results = query.list();
+
+        id = (Long) results.get(0);
+
+        transaction.commit();
+
+        return id;
+    }
+
+    @Override
+    public Long getUserIdByName(String username) throws SQLException {
+        Long id;
         this.session = createNewSession();
 
         Transaction transaction = session.beginTransaction();
 
         String hql = "SELECT U.id FROM User U WHERE U.username = :nameOfUser";
         Query query = session.createQuery(hql);
-        query.setParameter("nameOfUser", name);
+        query.setParameter("nameOfUser", username);
         List results = query.list();
 
-        id = (long) results.get(0);
+        id = (Long) results.get(0);
 
         transaction.commit();
         session.close();
@@ -110,7 +113,7 @@ public class UserDaoByHibernate implements UserDao {
     }
 
     @Override
-    public boolean isExistsUser(String name) throws SQLException {
+    public Boolean isExistsUser(String name) throws SQLException {
         if (getUserByName(name) == null) {
             return false;
         }

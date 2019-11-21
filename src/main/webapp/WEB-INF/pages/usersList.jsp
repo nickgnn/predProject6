@@ -23,13 +23,13 @@
                 <tr>
                     <td>Name:</td>
                     <td>
-                        <input type="text" name="username">
+                        <input type="text" required placeholder="username" name="username">
                     </td>
                 </tr>
                 <tr>
                     <td>Password:</td>
                     <td>
-                        <input type="password" name="password">
+                        <input type="password" required placeholder="password" name="password">
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +41,7 @@
                 <tr>
                     <td>Role:</td>
                     <td>
-                        <input type="text" name="role">
+                        <input type="text" required placeholder="role" name="role">
                     </td>
                 </tr>
                 <tr>
@@ -120,12 +120,12 @@
                         <input type="text" name="newRole">
                     </td>
                 </tr>
-                <tr>
-                    <td>Edit role_id:</td>
-                    <td>
-                        <input type="number" name="newRole_Id">
-                    </td>
-                </tr>
+                <%--<tr>--%>
+                    <%--<td>Edit role_id:</td>--%>
+                    <%--<td>--%>
+                        <%--<input type="number" name="newRole_Id">--%>
+                    <%--</td>--%>
+                <%--</tr>--%>
                 <tr>
                     <td>
                         <input type="hidden" name="id" value=<%=user.getId()%>>

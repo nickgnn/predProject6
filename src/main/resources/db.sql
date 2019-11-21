@@ -1,3 +1,11 @@
+SELECT * FROM db_example.users;
+SELECT * FROM db_example.roles;
+SELECT * FROM db_example.user_roles;
+
+DROP TABLE db_example.users;
+DROP TABLE db_example.roles;
+DROP TABLE db_example.user_roles;
+
 -- Table: users
 CREATE TABLE users (
   id bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -5,7 +13,7 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL,
   age INT,
   role VARCHAR(255) NOT NULL,
-  role_id INT
+  role_id bigint
 )
   ENGINE = InnoDB;
 

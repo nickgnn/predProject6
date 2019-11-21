@@ -14,17 +14,17 @@ public interface UserDao {
 
     List<User> getAllUsers() throws SQLException;
 
-    void addUser(String name, String password) throws SQLException;
-
-    void addUser(String name, String password, Integer age, String role) throws SQLException;
+    void addUser(String name, String password, Integer age, String role, Long role_ID) throws SQLException;
 
     User getUserByName(String name) throws SQLException;
 
+    Long getRoleIdByName(String name) throws SQLException;
+
     void updateUser(User user) throws SQLException;
 
-    long getUserIdByName(String name) throws SQLException;
+    Long getUserIdByName(String name) throws SQLException;
 
-    boolean isExistsUser(String name) throws SQLException;
+    Boolean isExistsUser(String name) throws SQLException;
 
     void deleteUserByName(String name) throws SQLException;
 

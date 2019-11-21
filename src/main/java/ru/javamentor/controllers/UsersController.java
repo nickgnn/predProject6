@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import ru.javamentor.model.User;
 import ru.javamentor.service.UserService;
@@ -26,6 +27,10 @@ public class UsersController {
 
     @GetMapping("/add")
     public String addUser(String username, String password, Integer age, String role) throws DBException {
+        if (StringUtils.isEmpty(age)) {
+            age = 0;
+        }
+
         service.addUser(username, password, age, role);
         return "redirect:/users";
     }
@@ -35,12 +40,20 @@ public class UsersController {
         System.out.println(user);
 
         String newName = request.getParameter("newName");
-        String newAge = request.getParameter("newAge");
         String newPassword = request.getParameter("newPassword");
+        String newAge = request.getParameter("newAge");
         String newRole = request.getParameter("newRole");
         String newRole_Id = request.getParameter("newRole_Id");
 
-        User newUser = new User(newName, newPassword, Integer.valueOf(newAge), newRole, Integer.valueOf(newRole_Id));
+        if (StringUtils.isEmpty(newAge)) {
+            newAge = String.valueOf(user.getAge());
+        }
+
+        if (StringUtils.isEmpty(newRole_Id)) {
+            newRole_Id = String.valueOf(user.getRole_id());
+        }
+
+        User newUser = new User(newName, newPassword, Integer.valueOf(newAge), newRole, Long.valueOf(newRole_Id));
 
         service.updateUser(user, newUser);
 
