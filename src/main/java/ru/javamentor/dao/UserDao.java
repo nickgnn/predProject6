@@ -16,6 +16,8 @@ public interface UserDao {
 
     void addUser(String name, String password, Integer age, String role, Long role_ID) throws SQLException;
 
+    void addRoles(Long user_id, Long role_id) throws SQLException;
+
     User getUserByName(String name) throws SQLException;
 
     Long getRoleIdByName(String name) throws SQLException;

@@ -6,6 +6,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -25,6 +27,9 @@ public class UserServiceImpl implements UserService {
     @Qualifier("userDaoByHibernate")
     UserDao userDao;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     @Override
     public void addUser(String name, String password, Integer age, String role) throws DBException {
         try {
@@ -41,7 +46,8 @@ public class UserServiceImpl implements UserService {
                 role_ID = userDao.getRoleIdByName(role);
             }
 
-            userDao.addUser(name, password, age, role, role_ID);
+            userDao.addUser(name, encoder.encode(password), age, role, role_ID);
+            userDao.addRoles(userDao.getUserIdByName(name), role_ID);
         } catch (SQLException e) {
             throw new DBException(e);
         }
@@ -102,9 +108,9 @@ public class UserServiceImpl implements UserService {
             }
 
             user.setAge(newUser.getAge());
-//            user.setRole_id(newUser.getRole_id());
 
             userDao.updateUser(user);
+            userDao.addRoles(user.getId(), user.getRole_id());
         } catch (SQLException e) {
             throw new DBException(e);
         }

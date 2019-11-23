@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.javamentor.config.HibernateConfig;
 import ru.javamentor.model.User;
+import ru.javamentor.model.UserRoles;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -36,6 +37,19 @@ public class UserDaoByHibernate implements UserDao {
             System.out.println("This name already exists, choose another name:)");
         }
     }
+
+    @Override
+    public void addRoles(Long user_id, Long role_id) throws SQLException {
+        this.session = createNewSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        session.save(new UserRoles(user_id, role_id));
+
+        transaction.commit();
+        session.close();
+    }
+
 
     @Override
     public List<User> getAllUsers() throws SQLException {
