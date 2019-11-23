@@ -2,7 +2,6 @@ package ru.javamentor.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 import ru.javamentor.exception.DBException;
-import org.springframework.stereotype.Component;
 import ru.javamentor.model.User;
 
 import java.util.List;
