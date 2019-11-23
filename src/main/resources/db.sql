@@ -37,5 +37,9 @@ CREATE TABLE user_roles (
   ENGINE = InnoDB;
 
 -- Insert data
+
 INSERT INTO roles VALUES (1, 'ROLE_USER');
 INSERT INTO roles VALUES (2, 'ROLE_ADMIN');
+
+INSERT INTO users VALUES (1, 'admin', '$2a$10$FimkM/GY3KKDfepfx/2UeujXl4L3MnQekqnVdps9xcRRgg6hqUAeG', 31, 'ROLE_ADMIN', 2);
+INSERT INTO user_roles VALUES(1, 2);
