@@ -31,6 +31,10 @@ public class UsersController {
             age = 0;
         }
 
+        if (StringUtils.isEmpty(role)) {
+            role = "user";
+        }
+
         service.addUser(username, password, age, role);
         return "redirect:/users";
     }

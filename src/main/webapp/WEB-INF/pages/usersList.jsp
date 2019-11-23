@@ -41,7 +41,7 @@
                 <tr>
                     <td>Role:</td>
                     <td>
-                        <input type="text" required placeholder="role" name="role">
+                        <input type="text" name="role">
                     </td>
                 </tr>
                 <tr>
