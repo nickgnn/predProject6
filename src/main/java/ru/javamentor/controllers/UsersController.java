@@ -42,7 +42,7 @@ public class UsersController {
     @GetMapping("/edit")
     public String editUser(@ModelAttribute User user, HttpServletRequest request) throws DBException {
         System.out.println(user);
-
+        //
         String newName = request.getParameter("newName");
         String newPassword = request.getParameter("newPassword");
         String newAge = request.getParameter("newAge");

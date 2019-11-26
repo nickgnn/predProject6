@@ -127,6 +127,7 @@ public class UserDaoByHibernate implements UserDao {
     }
 
     @Override
+    //todo перенести в сервис
     public Boolean isExistsUser(String name) throws SQLException {
         if (getUserByName(name) == null) {
             return false;
