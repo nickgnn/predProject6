@@ -22,6 +22,9 @@
                 <button type="submit" class="btn">Log in</button>
             </div>
     </form>
+
+    <p><a href="/" th:href="@{/}">Back to home page</a></p>
+
 </div>
 </body>
 </html>
