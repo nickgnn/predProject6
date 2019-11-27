@@ -16,8 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/")
 public class UsersController {
-    @Autowired
     public UserService service;
+
+    @Autowired
+    public UsersController(UserService service) {
+        this.service = service;
+    }
 
     @GetMapping("/users")
     public String getListOfUsers(Model model) throws DBException{
