@@ -22,12 +22,13 @@ import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    @Qualifier("userDaoByHibernate")
     private UserDao userDao;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(@Autowired @Qualifier("userDaoByHibernate") UserDao userDao, @Autowired PasswordEncoder passwordEncoder) {
+        this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public void addUser(String name, String password, Integer age, String role) throws DBException {
