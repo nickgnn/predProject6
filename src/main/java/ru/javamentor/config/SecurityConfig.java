@@ -42,10 +42,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and();
 
         http.formLogin()
+                .loginPage("/login")
                 .permitAll();
 
         http.logout()
                 .permitAll();
+
+        http.httpBasic();
     }
 
     @Bean

@@ -1,53 +1,28 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: nick
-  Date: 17.11.2019
-  Time: 11:42
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Log In</title>
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:include="layout :: head(title=~{::title},links=~{})">
+    <title>Please Login</title>
 </head>
-<body>
+<body th:include="layout :: body" th:with="content=~{::content}">
+<div th:fragment="content">
+    <form name="f" th:action="@{/login}" method="post">
+            <legend><h1>Fill form below</h1></legend>
 
-<h2>Login page</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"/>
 
-<br>
-
-
-<a href="/">Start page</a>
-
-<br>
-<br>
+        <br>
 
 
-<h1>Fill form below</h1>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"/>
+            <div class="form-actions">
 
-<form action="/login" method="post">
-    <table>
-        <tbody>
-        <tr>
-            <td>Login:</td>
-            <td>
-                <input type="text" required placeholder="username" name="username" >
-            </td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td>
-                <input type="password" required placeholder="pass" name="pass" >
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Enter" >
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</form>
+                <br>
 
+                <button type="submit" class="btn">Log in</button>
+            </div>
+    </form>
+</div>
 </body>
 </html>
+
