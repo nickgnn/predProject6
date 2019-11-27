@@ -18,7 +18,6 @@ import ru.javamentor.service.UserService;
 @ComponentScan("ru.javamentor")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    @Qualifier("userServiceImpl")
     private UserService userService;
 
     @Autowired

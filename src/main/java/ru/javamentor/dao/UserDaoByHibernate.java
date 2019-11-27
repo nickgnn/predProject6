@@ -14,9 +14,13 @@ import java.util.List;
 
 @Component
 public class UserDaoByHibernate implements UserDao {
-    @Autowired
     private HibernateConfig hibernateConfig;
     private Session session;
+
+    @Autowired
+    public UserDaoByHibernate(HibernateConfig hibernateConfig) {
+        this.hibernateConfig = hibernateConfig;
+    }
 
     private Session createNewSession() {
         return hibernateConfig.createSessionFactory().openSession();
@@ -49,7 +53,6 @@ public class UserDaoByHibernate implements UserDao {
         transaction.commit();
         session.close();
     }
-
 
     @Override
     public List<User> getAllUsers() throws SQLException {

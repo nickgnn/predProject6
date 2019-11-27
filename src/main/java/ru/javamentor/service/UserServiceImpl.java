@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Autowired
-    private PasswordEncoder encoder;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void addUser(String name, String password, Integer age, String role) throws DBException {
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
                 role_ID = userDao.getRoleIdByName(role);
             }
 
-            userDao.addUser(name, encoder.encode(password), age, role, role_ID);
+            userDao.addUser(name, passwordEncoder.encode(password), age, role, role_ID);
             userDao.addRoles(userDao.getUserIdByName(name), role_ID);
         } catch (SQLException e) {
             throw new DBException(e);
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
             }
 
             if (!StringUtils.isEmpty(newUser.getPassword())) {
-                user.setPassword(encoder.encode(newUser.getPassword()));
+                user.setPassword(passwordEncoder.encode(newUser.getPassword()));
             }
 
             if (!StringUtils.isEmpty(newUser.getRole())) {
