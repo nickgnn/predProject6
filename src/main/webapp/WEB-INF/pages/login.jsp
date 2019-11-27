@@ -25,7 +25,7 @@
 
 <h1>Fill form below</h1>
 
-<form action="/login" method="get">
+<form action="/login" method="post">
     <table>
         <tbody>
         <tr>

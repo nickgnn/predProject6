@@ -20,7 +20,7 @@
 <br>
 <br>
 
-<a href="/users">Show users</a>
+<a href="/admin">Show users</a>
 
 
 <br>

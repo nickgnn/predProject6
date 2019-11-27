@@ -79,7 +79,7 @@
         </tr>
     </thead>
     <%
-        List<User> userList = (List<User>) request.getAttribute("usersList");
+        List<User> userList = (List<User>) request.getAttribute("admin");
     %>
     <%
         for (User user : userList) {

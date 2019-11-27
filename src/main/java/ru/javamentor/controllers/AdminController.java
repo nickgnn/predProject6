@@ -15,18 +15,18 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/")
-public class UsersController {
+public class AdminController {
     public UserService service;
 
     @Autowired
-    public UsersController(UserService service) {
+    public AdminController(UserService service) {
         this.service = service;
     }
 
-    @GetMapping("/users")
+    @GetMapping("/admin")
     public String getListOfUsers(Model model) throws DBException{
-        model.addAttribute("usersList", service.getAllUsers());
-        return "usersList";
+        model.addAttribute("admin", service.getAllUsers());
+        return "admin";
     }
 
     @GetMapping("/add")
@@ -40,7 +40,7 @@ public class UsersController {
         }
 
         service.addUser(username, password, age, role);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
 
     @GetMapping("/edit")
@@ -65,12 +65,12 @@ public class UsersController {
 
         service.updateUser(user, newUser);
 
-        return "redirect:/users";
+        return "redirect:/admin";
     }
 
     @GetMapping("/delete")
     public String deleteUser(long id) throws DBException{
         service.deleteUserById(id);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
 }
