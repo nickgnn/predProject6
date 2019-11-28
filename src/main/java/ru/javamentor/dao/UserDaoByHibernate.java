@@ -5,7 +5,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.javamentor.config.HibernateConfig;
+import ru.javamentor.config.hibernateConfig.HibernateConfig;
 import ru.javamentor.model.User;
 import ru.javamentor.model.UserRoles;
 
@@ -88,25 +88,6 @@ public class UserDaoByHibernate implements UserDao {
         session.close();
 
         return users.get(0);
-    }
-
-    @Override
-    public Long getRoleIdByName(String name) throws SQLException {
-        Long id;
-        this.session = createNewSession();
-
-        Transaction transaction =  session.beginTransaction();
-
-        String hql = "SELECT R.id FROM Role R WHERE R.rolename = :roleName";
-        Query query = session.createQuery(hql);
-        query.setParameter("roleName", name);
-        List results = query.list();
-
-        id = (Long) results.get(0);
-
-        transaction.commit();
-
-        return id;
     }
 
     @Override

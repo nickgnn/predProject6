@@ -1,7 +1,8 @@
-package ru.javamentor.config;
+package ru.javamentor.config.webMvcConfig;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import ru.javamentor.config.securityConfig.SecurityConfig;
 
 @Configuration
 public class WebAppInit extends AbstractAnnotationConfigDispatcherServletInitializer {

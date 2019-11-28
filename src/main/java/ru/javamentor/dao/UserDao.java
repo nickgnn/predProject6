@@ -20,8 +20,6 @@ public interface UserDao {
 
     User getUserByName(String name) throws SQLException;
 
-    Long getRoleIdByName(String name) throws SQLException;
-
     void updateUser(User user) throws SQLException;
 
     Long getUserIdByName(String name) throws SQLException;

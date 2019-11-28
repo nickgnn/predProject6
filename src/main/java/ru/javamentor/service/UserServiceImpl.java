@@ -23,10 +23,12 @@ import java.util.Set;
 @Service
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
+    private RoleService roleService;
     private PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(@Autowired @Qualifier("userDaoByHibernate") UserDao userDao, @Autowired PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(@Autowired UserDao userDao, @Autowired RoleService roleService, @Autowired PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
+        this.roleService = roleService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -38,12 +40,12 @@ public class UserServiceImpl implements UserService {
 
             if (role.contains("ADMIN")) {
                 role = "ROLE_ADMIN";
-                role_ID = userDao.getRoleIdByName(role);
+                role_ID = roleService.getRoleIdByName(role);
             }
 
             if (role.contains("USER")) {
                 role = "ROLE_USER";
-                role_ID = userDao.getRoleIdByName(role);
+                role_ID = roleService.getRoleIdByName(role);
             }
 
             userDao.addUser(name, passwordEncoder.encode(password), age, role, role_ID);
@@ -98,12 +100,12 @@ public class UserServiceImpl implements UserService {
 
                 if (user.getRole().contains("ADMIN")) {
                     user.setRole("ROLE_ADMIN");
-                    user.setRole_id(userDao.getRoleIdByName(user.getRole()));
+                    user.setRole_id(roleService.getRoleIdByName(user.getRole()));
                 }
 
                 if (user.getRole().contains("USER")) {
                     user.setRole("ROLE_USER");
-                    user.setRole_id(userDao.getRoleIdByName(user.getRole()));
+                    user.setRole_id(roleService.getRoleIdByName(user.getRole()));
                 }
             }
 

@@ -1,4 +1,4 @@
-package ru.javamentor.config;
+package ru.javamentor.config.hibernateConfig;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

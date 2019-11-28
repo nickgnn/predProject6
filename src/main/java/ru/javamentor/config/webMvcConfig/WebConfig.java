@@ -1,4 +1,4 @@
-package ru.javamentor.config;
+package ru.javamentor.config.webMvcConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
