@@ -24,4 +24,13 @@ public class RoleServiceImpl implements RoleService {
             throw new DBException(e);
         }
     }
+
+    @Override
+    public void addRoles(Long user_id, Long role_id) throws DBException {
+        try {
+            roleDao.addRoles(user_id, role_id);
+        } catch (SQLException e) {
+            throw new DBException(e);
+        }
+    }
 }

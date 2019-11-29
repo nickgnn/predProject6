@@ -42,4 +42,16 @@ public class RoleDaoImpl implements RoleDao {
 
         return id;
     }
+
+    @Override
+    public void addRoles(Long user_id, Long role_id) throws SQLException {
+        this.session = createNewSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        session.createSQLQuery("INSERT INTO user_roles VALUES(" + user_id + ", " + role_id + ");").executeUpdate();
+
+        transaction.commit();
+        session.close();
+    }
 }

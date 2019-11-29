@@ -1,7 +1,6 @@
 package ru.javamentor.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -49,7 +48,7 @@ public class UserServiceImpl implements UserService {
             }
 
             userDao.addUser(name, passwordEncoder.encode(password), age, role, role_ID);
-            userDao.addRoles(userDao.getUserIdByName(name), role_ID);
+            roleService.addRoles(userDao.getUserIdByName(name), role_ID);
         } catch (SQLException e) {
             throw new DBException(e);
         }
@@ -112,7 +111,7 @@ public class UserServiceImpl implements UserService {
             user.setAge(newUser.getAge());
 
             userDao.updateUser(user);
-            userDao.addRoles(user.getId(), user.getRole_id());
+            roleService.addRoles(user.getId(), user.getRole_id());
         } catch (SQLException e) {
             throw new DBException(e);
         }

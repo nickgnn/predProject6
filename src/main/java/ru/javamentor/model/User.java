@@ -31,13 +31,14 @@ public class User implements UserDetails {
     @Column(name = "role_id")
     private Long role_id;
 
-    @OneToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(
-                    name = "user_id"),
+                    name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "role_id"))
+                    name = "role_id", referencedColumnName = "id"))
+
     private Set<Role> roles;
 
     public User() {}

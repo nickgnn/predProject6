@@ -7,7 +7,6 @@ import org.hibernate.service.ServiceRegistry;
 import org.springframework.stereotype.Component;
 import ru.javamentor.model.Role;
 import ru.javamentor.model.User;
-import ru.javamentor.model.UserRoles;
 
 @Component
 public class HibernateConfig {
@@ -24,7 +23,6 @@ public class HibernateConfig {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(Role.class);
-        configuration.addAnnotatedClass(UserRoles.class);
 
         return configuration;
     }
