@@ -3,6 +3,7 @@ package ru.javamentor.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,26 +45,8 @@ public class AdminController {
     }
 
     @GetMapping("/edit")
-    public String editUser(@ModelAttribute User user, HttpServletRequest request) throws DBException {
-        System.out.println(user);
-
-        String newName = request.getParameter("newName");
-        String newPassword = request.getParameter("newPassword");
-        String newAge = request.getParameter("newAge");
-        String newRole = request.getParameter("newRole");
-        String newRole_Id = request.getParameter("newRole_Id");
-
-        if (StringUtils.isEmpty(newAge)) {
-            newAge = String.valueOf(user.getAge());
-        }
-
-        if (StringUtils.isEmpty(newRole_Id)) {
-            newRole_Id = String.valueOf(user.getRole_id());
-        }
-
-        User newUser = new User(newName, newPassword, Integer.valueOf(newAge), newRole, Long.valueOf(newRole_Id));
-
-        service.updateUser(user, newUser);
+    public String editUser(@ModelAttribute User user, HttpServletRequest request, ModelMap map) throws DBException {
+        service.updateUser(user);
 
         return "redirect:/admin";
     }

@@ -82,19 +82,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user, User newUser) throws DBException {
+    public void updateUser(User user) throws DBException {
         try {
-            if (!StringUtils.isEmpty(newUser.getUsername())) {
-                user.setUsername(newUser.getUsername());
+            if (StringUtils.isEmpty(user.getUsername())) {
+                user.setUsername(userDao.getUserById(user.getId()).getUsername());
             }
 
-            if (!StringUtils.isEmpty(newUser.getPassword())) {
-                user.setPassword(passwordEncoder.encode(newUser.getPassword()));
+            if (StringUtils.isEmpty(user.getPassword())) {
+                user.setPassword(userDao.getUserById(user.getId()).getPassword());
+            } else {
+                if (!user.getPassword().contains("$")) {
+                    user.setPassword(passwordEncoder.encode(user.getPassword()));
+                }
             }
 
-            if (!StringUtils.isEmpty(newUser.getRole())) {
-                user.setRole(newUser.getRole());
+            if (StringUtils.isEmpty(user.getAge())) {
+                user.setAge(userDao.getUserById(user.getId()).getAge());
+            }
 
+            if (StringUtils.isEmpty(user.getRole())) {
+                user.setRole(userDao.getUserById(user.getId()).getRole());
+            } else {
                 user.setRole(user.getRole().toUpperCase());
 
                 if (user.getRole().contains("ADMIN")) {
@@ -107,8 +115,6 @@ public class UserServiceImpl implements UserService {
                     user.setRole_id(roleService.getRoleIdByName(user.getRole()));
                 }
             }
-
-            user.setAge(newUser.getAge());
 
             userDao.updateUser(user);
             roleService.addRoles(user.getId(), user.getRole_id());

@@ -17,7 +17,7 @@ public interface UserService extends UserDetailsService {
 
     User getUserByName(String name) throws DBException;
 
-    void updateUser(User user, User newUser) throws DBException;
+    void updateUser(User user) throws DBException;
 
     Boolean isExistsUser(String name) throws DBException;
 

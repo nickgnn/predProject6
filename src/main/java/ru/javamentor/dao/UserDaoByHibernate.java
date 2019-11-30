@@ -59,11 +59,33 @@ public class UserDaoByHibernate implements UserDao {
     public User getUserByName(String name) throws SQLException {
         this.session = createNewSession();
 
-        Transaction transaction =  session.beginTransaction();
+        Transaction transaction = session.beginTransaction();
 
         String hql = "FROM User WHERE username = :nameOfUser";
         Query query = session.createQuery(hql);
         query.setParameter("nameOfUser", name);
+        List<User> users = query.list();
+
+        transaction.commit();
+
+        if (users.size() == 0) {
+            return null;
+        }
+
+        session.close();
+
+        return users.get(0);
+    }
+
+    @Override
+    public User getUserById(Long ID) throws SQLException {
+        this.session = createNewSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "FROM User WHERE id = :ID";
+        Query query = session.createQuery(hql);
+        query.setParameter("ID", ID);
         List<User> users = query.list();
 
         transaction.commit();
