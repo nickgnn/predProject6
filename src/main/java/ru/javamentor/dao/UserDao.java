@@ -12,7 +12,7 @@ public interface UserDao {
 
     void dropTable() throws SQLException;
 
-    List<User> getAllUsers() throws SQLException;
+    List getAllUsers() throws SQLException;
 
     void addUser(String name, String password, Integer age, String role, Long role_ID) throws SQLException;
 

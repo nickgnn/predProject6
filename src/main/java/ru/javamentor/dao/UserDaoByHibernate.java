@@ -1,120 +1,76 @@
 package ru.javamentor.dao;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import ru.javamentor.config.hibernateConfig.HibernateConfig;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.javamentor.model.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.sql.SQLException;
 import java.util.List;
 
-@Component
+@Repository("userDaoByHibernate")
+@Transactional
 public class UserDaoByHibernate implements UserDao {
-    private HibernateConfig hibernateConfig;
-    private Session session;
-
-    @Autowired
-    public UserDaoByHibernate(HibernateConfig hibernateConfig) {
-        this.hibernateConfig = hibernateConfig;
-    }
-
-    private Session createNewSession() {
-        return hibernateConfig.createSessionFactory().openSession();
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public void addUser(String name, String password, Integer age, String role, Long role_ID) throws SQLException {
-        this.session = createNewSession();
-
         User user = getUserByName(name);
 
         if (user == null) {
-            Transaction transaction = session.beginTransaction();
-            session.save(new User(name, password, age, role, role_ID));
-            transaction.commit();
-            session.close();
+            entityManager.persist(new User(name, password, age, role, role_ID));
         } else {
             System.out.println("This name already exists, choose another name:)");
         }
     }
 
     @Override
-    public List<User> getAllUsers() throws SQLException {
-        this.session = createNewSession();
-
-        Transaction transaction = session.beginTransaction();
-
-        List<User> users = session.createQuery("FROM User").list();
-
-        transaction.commit();
-        session.close();
-
-        return users;
+    @SuppressWarnings("unchecked")
+    public List<User> getAllUsers() {
+        return (List<User>) entityManager.createQuery("SELECT u FROM User u").getResultList();
     }
+
+//    @Override
+//    public List<User> getAllUsers() throws SQLException {
+//        EntityManager entityManager = factory.createEntityManager();
+//
+//        EntityTransaction transaction = entityManager.getTransaction();
+//        transaction.begin();
+//
+//        Query query = (Query) entityManager.createQuery("FROM User");
+//
+//        transaction.commit();
+//        entityManager.close();
+//
+//        return query.getResultList();
+//    }
 
     @Override
     public User getUserByName(String name) throws SQLException {
-        this.session = createNewSession();
-
-        Transaction transaction = session.beginTransaction();
-
-        String hql = "FROM User WHERE username = :nameOfUser";
-        Query query = session.createQuery(hql);
-        query.setParameter("nameOfUser", name);
-        List<User> users = query.list();
-
-        transaction.commit();
-
-        if (users.size() == 0) {
-            return null;
-        }
-
-        session.close();
-
-        return users.get(0);
+        return entityManager.find(User.class, name);
     }
 
     @Override
     public User getUserById(Long ID) throws SQLException {
-        this.session = createNewSession();
-
-        Transaction transaction = session.beginTransaction();
-
-        String hql = "FROM User WHERE id = :ID";
-        Query query = session.createQuery(hql);
-        query.setParameter("ID", ID);
-        List<User> users = query.list();
-
-        transaction.commit();
-
-        if (users.size() == 0) {
-            return null;
-        }
-
-        session.close();
-
-        return users.get(0);
+        return entityManager.find(User.class, ID);
     }
 
     @Override
     public Long getUserIdByName(String username) throws SQLException {
         Long id;
-        this.session = createNewSession();
-
-        Transaction transaction = session.beginTransaction();
 
         String hql = "SELECT U.id FROM User U WHERE U.username = :nameOfUser";
-        Query query = session.createQuery(hql);
+        Query query = (Query) entityManager.createQuery(hql);
         query.setParameter("nameOfUser", username);
         List results = query.list();
 
         id = (Long) results.get(0);
 
-        transaction.commit();
-        session.close();
+        entityManager.close();
 
         return id;
     }
@@ -130,46 +86,29 @@ public class UserDaoByHibernate implements UserDao {
 
     @Override
     public void updateUser(User user) throws SQLException {
-        this.session = createNewSession();
-
-        Transaction transaction = session.beginTransaction();
-
-        session.update(user);
-
-        transaction.commit();
-        session.close();
+        entityManager.merge(user);
     }
 
     @Override
     public void deleteUserByName(String name) throws SQLException {
-        this.session = createNewSession();
-
-        Transaction transaction = session.beginTransaction();
-
         String hql = "DELETE User WHERE username = :nameOfUser";
-        Query query = session.createQuery(hql);
+        Query query = (Query) entityManager.createQuery(hql);
         query.setParameter("nameOfUser", name);
 
         query.executeUpdate();
 
-        transaction.commit();
-        session.close();
+        entityManager.close();
     }
 
     @Override
     public void deleteUserById(Long id) throws SQLException {
-        this.session = createNewSession();
-
-        Transaction transaction = session.beginTransaction();
-
         String hql = "DELETE User WHERE id = :userID";
-        Query query = session.createQuery(hql);
+        Query query = (Query) entityManager.createQuery(hql);
         query.setParameter("userID", id);
 
         query.executeUpdate();
 
-        transaction.commit();
-        session.close();
+        entityManager.close();
     }
 
     @Override
