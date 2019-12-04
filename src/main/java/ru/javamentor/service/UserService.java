@@ -7,15 +7,16 @@ import ru.javamentor.model.User;
 import java.util.List;
 
 public interface UserService extends UserDetailsService {
-    void createTable() throws DBException;
-
-    void cleanUp() throws DBException;
 
     List<User> getAllUsers() throws DBException;
 
     void addUser(String name, String password, Integer age, String role) throws DBException;
 
+    User addUser(User user) throws DBException;
+
     User getUserByName(String name) throws DBException;
+
+    User getUserByID(Long ID) throws DBException;
 
     void updateUser(User user) throws DBException;
 

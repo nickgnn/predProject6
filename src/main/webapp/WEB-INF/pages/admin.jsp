@@ -60,7 +60,7 @@
 <br>
 
 <h1>List of users</h1>
-<form action="/users" method="get">
+<form action="/admin" method="get">
     <input type="submit" value="Refresh list">
 </form>
 
