@@ -69,10 +69,6 @@ public class JPAConfig {
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.put(PROP_HIBERNATE_DIALECT, env.getProperty(PROP_HIBERNATE_DIALECT));
-        properties.put("hibernate.connection.driver_class", env.getProperty("hibernate.connection.driver_class"));
-        properties.put("hibernate.connection.url", env.getProperty("hibernate.connection.url"));
-        properties.put("hibernate.connection.username", env.getProperty("hibernate.connection.username"));
-        properties.put("hibernate.connection.password", env.getProperty("hibernate.connection.password"));
         properties.put(PROP_HIBERNATE_SHOW_SQL, env.getProperty(PROP_HIBERNATE_SHOW_SQL));
         properties.put(PROP_HIBERNATE_HBM2DDL_AUTO, env.getProperty(PROP_HIBERNATE_HBM2DDL_AUTO));
 
